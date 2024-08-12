@@ -9,8 +9,7 @@ export type UserDocuement = HydratedDocument<User>;
 export class User extends Entidad {
     @Prop( {required : true}) Email: string;
     @Prop( {required : true}) Rol: string[];
-    @Prop( {type : Buffer, required: true} ) HashedPassword: Buffer;
-    @Prop( {type : Buffer, required: true} ) Salt: Buffer;
+    @Prop( {type : Buffer, required: true} ) HashedPassword: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

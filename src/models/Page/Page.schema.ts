@@ -2,17 +2,14 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument, Types } from "mongoose";
 import { Entidad } from "../Entidad.schema";
 
-export type FileDocument = HydratedDocument<File>;
+export type PageDocument = HydratedDocument<File>;
 @Schema()
-export class FileItem extends Entidad {
+export class Page extends Entidad {
     @Prop({ type: Types.ObjectId, ref: 'User', required: true })
     OwnerId: Types.ObjectId;
 
     @Prop({ type: String, required: true })
-    FileName: string;
-
-    @Prop({ type: String, required: true })
-    FilePath: string;
+    PageRoute: string;
 
     @Prop({ type: String, required: true })
     MimeType: string;
@@ -22,10 +19,7 @@ export class FileItem extends Entidad {
 
     @Prop({ type: Boolean, default: false })
     IsPublic: boolean;
-
-    @Prop({ type: String, default: "" })
-    Readme: string;
 }
 
-export const FileSchema = SchemaFactory.createForClass(File);
+export const PageSchema = SchemaFactory.createForClass(Page);
 
