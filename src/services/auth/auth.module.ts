@@ -9,7 +9,7 @@ import environment from 'src/enviroment';
   imports: [
     JwtModule.register({
       secret: environment.JwtToken, // Deberías usar una variable de entorno aquí
-      signOptions: { expiresIn: '1h', audience: 'CloudmesaIssuer', issuer: 'CloudMesaIssuer', algorithm: 'RS512' }, // Opciones de expiración del token
+      signOptions: { expiresIn: '1h', audience: 'CloudmesaIssuer', issuer: 'CloudMesaIssuer', algorithm: 'HS512' }, // Opciones de expiración del token
     }),
     UserModule
   ],

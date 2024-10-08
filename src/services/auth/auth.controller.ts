@@ -1,4 +1,4 @@
-import { Controller, Post, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from 'src/dto/Auth/LoginDto';
 import { RegisterDto } from 'src/dto/Auth/RegisterDto';
@@ -14,7 +14,7 @@ export class AuthController {
 
 
     @Post("Login")
-    public async login(loginDto : LoginDto) : Promise<UserWithTokenDto>{
+    public async login(@Body() loginDto : LoginDto) : Promise<UserWithTokenDto>{
         const datos = await this.AuthService.Login(loginDto.Email, loginDto.Password);
         if (datos.Resultado != 0){  
             throw new UnauthorizedException();
@@ -28,7 +28,7 @@ export class AuthController {
 
 
     @Post("Register")
-    public async register(registerDto: RegisterDto) : Promise<UserWithTokenDto>{
+    public async register(@Body() registerDto: RegisterDto) : Promise<UserWithTokenDto>{
         const datos = await this.AuthService.Register(registerDto);
         if (datos.Resultado != 0){  
             throw new UnauthorizedException();

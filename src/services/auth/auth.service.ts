@@ -2,7 +2,7 @@ import { RegisterDto } from './../../dto/Auth/RegisterDto';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/models/User/User.service';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import { RItem } from 'src/utils/Ritem';
 import { User } from 'src/models/User/User.schema';
 import { register } from 'module';
