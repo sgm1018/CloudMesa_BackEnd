@@ -12,7 +12,7 @@ export class User extends Entidad {
     @Prop({ required: true }) FirstName: string;
     @Prop({ required: true }) LastName: string;
     @Prop({ required: true }) DateOfBirth: Date;
-    @Prop( {type : Buffer, required: true} ) HashedPassword: Buffer;
+    @Prop({ required: true} ) HashedPassword: String;
     @Prop({ required: false}) ProfilePictureUrl?: string;
 
 }    
