@@ -9,8 +9,6 @@ export class BaseService<T extends Entidad> {
     constructor(protected readonly entidadModel: Model<T>) {}
 
     public async create(entidad: Entidad): Promise<RItem<T>> {
-        entidad.FechaCreacion = new Date();
-        entidad.FechaModificacion = new Date();
         const datos = await this.entidadModel.create(entidad);
         if (!datos) {
             return new RItem<T>({

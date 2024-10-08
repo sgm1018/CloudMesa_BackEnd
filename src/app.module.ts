@@ -2,10 +2,18 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { FileItemModule } from './models/FileItem/FileItem.module';
+import { FileModule } from './models/File/File.module';
+import { PermisionModule } from './models/Permision/Permission.module';
+import { UserModule } from './models/User/User.module';
+import environment from './enviroment';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost:27017/CloudMesa'), FileItemModule], 
+  imports: [
+    MongooseModule.forRoot(environment.db),
+    FileModule,
+    PermisionModule,
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

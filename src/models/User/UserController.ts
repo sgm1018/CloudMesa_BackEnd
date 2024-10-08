@@ -1,25 +1,26 @@
 import { BadRequestException, Body, Controller, Get, Post } from "@nestjs/common";
 import { User } from "./User.schema";
 import { UserService } from "./User.service";
-import { AuthService } from "./auth/Auth.service";
+import { ApiTags } from "@nestjs/swagger";
 
-@Controller('api/File')
+@ApiTags('User')
+@Controller('api/User')
 export class UserController {
 
-    constructor( private readonly userService : UserService, private readonly authService: AuthService){
+    constructor( private readonly userService : UserService){
 
     }
 
     // @Post()
     // public async create(@Body() createCatDto: CreateCatDto) {
-    //     this.fileService.create();
+    //     this.userService.create();
 
 
     // }
 
     @Post()
-    public async create(page: User){
-        const datos = await this.userService.create(page);
+    public async create(@Body() file: User){
+        const datos = await this.userService.create(file);
         if (datos.Resultado !== 0) {
             throw new BadRequestException(datos.Mensaje || 'Error al crear la entidad');
         }
@@ -30,15 +31,6 @@ export class UserController {
     @Get()
     public async getAll(){
         const datos = await this.userService.getAll();
-        if (datos.Resultado !== 0) {
-            throw new BadRequestException(datos.Mensaje || 'Error al obtener las entidades');
-        }
-        return datos.Value; // Devuelve los datos
-    }
-
-    @Post('login')
-    public async login(@Body() user: User){
-        const datos = await this.authService.signIn(user);
         if (datos.Resultado !== 0) {
             throw new BadRequestException(datos.Mensaje || 'Error al obtener las entidades');
         }
