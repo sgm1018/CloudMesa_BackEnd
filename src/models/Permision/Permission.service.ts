@@ -8,7 +8,7 @@ import { Permission } from "./Permission.schema";
 export class PermissionService extends BaseService<Permission> {
 
 
-    constructor(@InjectModel(File.name) model: Model<Permission>) {
+    constructor(@InjectModel(Permission.name) model: Model<Permission>) {
         super(model);
     }
 

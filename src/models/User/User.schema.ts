@@ -9,9 +9,13 @@ export type UserDocuement = HydratedDocument<User>;
 export class User extends Entidad {
     @Prop( {required : true}) Email: string;
     @Prop( {required : true}) Rol: string[];
+    @Prop({ required: true }) FirstName: string;
+    @Prop({ required: true }) LastName: string;
+    @Prop({ required: true }) DateOfBirth: Date;
     @Prop( {type : Buffer, required: true} ) HashedPassword: Buffer;
-    @Prop( {type : Buffer, required: true} ) Salt: Buffer;
-}
+    @Prop({ required: false}) ProfilePictureUrl?: string;
+
+}    
 
 export const UserSchema = SchemaFactory.createForClass(User);
 

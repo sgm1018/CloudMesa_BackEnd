@@ -6,11 +6,11 @@ export type EntidadDocument = HydratedDocument<Entidad>;
 @Schema()
 export class Entidad {
 
-    @Prop({ type: mongoose.Schema.Types.ObjectId, auto: true }) Id: mongoose.Schema.Types.ObjectId; // Aquí se configura como primary key
-    @Prop() FechaCreacion: Date;
-    @Prop() FechaModificacion: Date;
-    @Prop() UsuarioCreacion: string;
-    @Prop() UsuarioModificacion: string;
+    @Prop({ type: mongoose.Schema.Types.ObjectId, auto: true }) Id?: mongoose.Schema.Types.ObjectId; // Aquí se configura como primary key
+    @Prop({ required: false }) FechaCreacion?: Date;
+    @Prop({ required: false }) FechaModificacion?: Date;
+    @Prop({ required: false }) UsuarioCreacion?: string;
+    @Prop({ required: false }) UsuarioModificacion?: string;
 
 }
 

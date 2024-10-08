@@ -6,6 +6,8 @@ import { FileModule } from './models/File/File.module';
 import { PermisionModule } from './models/Permision/Permission.module';
 import { UserModule } from './models/User/User.module';
 import environment from './enviroment';
+import { AuthModule } from './services/auth/auth.module';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -13,6 +15,7 @@ import environment from './enviroment';
     FileModule,
     PermisionModule,
     UserModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
